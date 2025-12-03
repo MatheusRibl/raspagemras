@@ -11,6 +11,16 @@ import traceback
 import time
 from urllib.parse import quote_plus, urlparse, unquote, parse_qs, urljoin
 
+# --- CÓDIGO DE DIAGNÓSTICO (APAGUE DEPOIS) ---
+import os
+print("DIRETÓRIO ATUAL:", os.getcwd())
+print("ARQUIVOS AQUI:", os.listdir(os.getcwd()))
+if os.path.exists('templates'):
+    print("CONTEÚDO DE TEMPLATES:", os.listdir('templates'))
+else:
+    print("❌ PASTA TEMPLATES NÃO ENCONTRADA!")
+# ---------------------------------------------
+
 # Flask app
 app = Flask(__name__)
 app.secret_key = os.getenv("FLASK_SECRET_KEY", "troque_essa_chave_em_producao")
@@ -685,3 +695,4 @@ def health():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host='0.0.0.0', port=port)
+
